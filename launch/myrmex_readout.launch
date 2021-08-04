@@ -1,22 +1,20 @@
 <launch>
-  <arg name="device" default="/dev/ttyACM0"/>
+  <arg name="device0" default="/dev/ttyACM0"/>
+  <arg name="device1" default="/dev/ttyACM1"/>
   
   <arg name="registration_folder" default="$(find agni_serial_protocol)/registration"/>
   <arg name="device_file" default="$(arg registration_folder)/device_types.yaml"/>
   <arg name="sensor_file" default="$(arg registration_folder)/registred_devices.yaml"/>
 
-  <arg name="debug" default="false"/>
+  <arg name="debug_option" default="" unless="$(arg debug)"/>
+  <arg name="debug_option" value="-v" if="$(arg debug)" /> 
 
-  <group if="$(arg debug)">
-    <node pkg="agni_serial_protocol" name="sp_to_ros" type="agni_serial_protocol_node" respawn="false" output="screen"
-     args="-s $(arg device) -v --sensor_file $(arg sensor_file) --device_file $(arg device_file)">
-    </node>
-  </group>
-
-  <group unless="$(arg debug)">
-    <node pkg="agni_serial_protocol" name="sp_to_ros" type="agni_serial_protocol_node" respawn="false" output="screen"
-     args="-s $(arg device) --ignore_timeout --sensor_file $(arg sensor_file) --device_file $(arg device_file)">
-    </node>
-  </group>
+  <node pkg="agni_serial_protocol" name="myrmex_readout_0" type="agni_serial_protocol_node" respawn="false" output="screen"
+    args="-s $(arg device0) $(arg debug_option) --ignore_timeout --sensor_file $(arg sensor_file) --device_file $(arg device_file)">
+    <remap from="tactile_module_16x16_v2" to="tactile0"/>
+  </node>
+  <node pkg="agni_serial_protocol" name="myrmex_readout_1" type="agni_serial_protocol_node" respawn="false" output="screen"
+    args="-s $(arg device1) $(arg debug_option) --ignore_timeout --sensor_file $(arg sensor_file) --device_file $(arg device_file)">
+    <remap from="tactile_module_16x16_v2" to="tactile1"/>
+  </node>
 </launch>
-
