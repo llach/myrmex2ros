@@ -1,0 +1,47 @@
+<launch>
+
+  <arg name="parent_frame" default="world"/>
+  <arg name="gui" default="true"/>
+
+  <!-- generate myrmex description  -->
+  <group ns="tactile_left">
+    <param name="robot_description" command="xacro '$(find myrmex_description)/robots/myrmex_single.urdf.xacro' board_row_nb:=1 board_col_nb:=1"/>
+
+    <!-- publish transforms of myrmex links -->
+    <node name="myrmex_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+      <param name="publish_frequency" type="double" value="10.0"/>
+      <param name="tf_prefix" value="tactile_left" />
+    </node>
+
+    <!-- publish joint values, -->
+    <node name="joint_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+      <param name="use_gui" value="false"/>
+      <param name="tf_prefix" value="tactile_left" />
+    </node>
+
+    <node name="offset_pub" pkg="tf" type="static_transform_publisher" args="0 0.05 0 0 0 0 world /tactile_left/world 10" />
+  </group>
+
+  <group ns="tactile_right">
+    <param name="robot_description" command="xacro '$(find myrmex_description)/robots/myrmex_single.urdf.xacro' board_row_nb:=1 board_col_nb:=1"/>
+
+    <!-- publish transforms of myrmex links -->
+    <node name="myrmex_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+      <param name="publish_frequency" type="double" value="10.0"/>
+      <param name="tf_prefix" value="tactile_right" />
+    </node>
+
+    <!-- publish joint values, -->
+    <node name="joint_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+      <param name="use_gui" value="false"/>
+      <param name="tf_prefix" value="tactile_right" />
+    </node>
+
+    <node name="offset_pub" pkg="tf" type="static_transform_publisher" args="0 -0.05 0 0 0 0 world /tactile_right/world 10" />
+  </group>
+
+  <group if="$(arg gui)">
+    <!-- rviz with settings -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tiago_myrmex)/launch/myrmex.rviz" output="screen" />
+  </group>
+</launch>
