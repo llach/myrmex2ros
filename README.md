@@ -6,3 +6,4 @@ Install dependencies:
 * [tactile_filters](https://github.com/ubi-agni/tactile_filters)
 * [tactile_toolbox](https://github.com/ubi-agni/tactile_toolbox) - messages and other tools 
 * [agni_serial_protocol](https://github.com/ubi-agni/agni_serial_protocol) - sensor drivers
+* [agni_robots](https://github.com/ubi-agni/agni_robots) - myrmex robot description files
