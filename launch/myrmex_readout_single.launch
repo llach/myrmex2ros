@@ -12,7 +12,7 @@
   <arg name="debug_option" value="-v" if="$(arg debug)" /> 
 
   <node pkg="agni_serial_protocol" name="myrmex_readout_right" type="agni_serial_protocol_node" respawn="false" output="screen"
-    args="-s /dev/ttyACM0 $(arg debug_option) --ignore_timeout --sensor_file $(arg sensor_file) --device_file $(arg device_file)">
+    args="-s /dev/myrmexR $(arg debug_option) --ignore_timeout --sensor_file $(arg sensor_file) --device_file $(arg device_file)">
     <remap from="tactile_module_16x16_v2" to="tactile_right"/>
   </node>
 </launch>
