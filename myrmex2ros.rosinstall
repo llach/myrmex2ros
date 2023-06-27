@@ -1,0 +1,29 @@
+repositories:
+  src/agni_robots:
+    type: git
+    url: git@github.com:ubi-agni/agni_robots.git
+    version: noetic-devel
+  src/agni_serial_protocol:
+    type: git
+    url: git@github.com:ubi-agni/agni_serial_protocol.git
+    version: master
+  src/tactile_filters:
+    type: git
+    url: git@github.com:ubi-agni/tactile_filters.git
+    version: master
+  src/tactile_toolbox:
+    type: git
+    url: git@github.com:ubi-agni/tactile_toolbox.git
+    version: melodic-devel
+  src/urdf:
+    type: git
+    url: git@github.com:ubi-agni/urdf.git
+    version: melodic-devel
+  src/urdfdom:
+    type: git
+    url: git@github.com:ubi-agni/urdfdom.git
+    version: ros-sensor-refactoring
+  src/urdfdom_headers:
+    type: git
+    url: git@github.com:ubi-agni/urdfdom_headers.git
+    version: ros-sensor-refactoring
