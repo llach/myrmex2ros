@@ -1,4 +1,4 @@
-# TIAGo Myrmex 
+# Myrmex2ROS 
 
 ## Install dependencies: 
 
