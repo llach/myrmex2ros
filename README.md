@@ -10,6 +10,7 @@ It's recommended to clone and build these repos in their own repo that is used s
 * [agni_serial_protocol](https://github.com/ubi-agni/agni_serial_protocol) - sensor drivers
 * [agni_robots](https://github.com/ubi-agni/agni_robots) - myrmex robot description files
 
+For automated cloning and building of the dependencies into `./dependencies_ws` run `setup_dependencies.sh` (requires [vcstool](https://github.com/dirk-thomas/vcstool)).
 
 ## Sensor hardware configuration
 
